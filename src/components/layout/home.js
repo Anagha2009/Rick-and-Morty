@@ -1,6 +1,7 @@
 import React from 'react'
 import Episodes from '../episodes/episodes'
- const Home =()=> {
+ 
+const Home =()=> {
     return (
         <div>
             <Episodes/>
