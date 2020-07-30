@@ -6,7 +6,6 @@ import Button from './button'
 const EpisodeList=()=> {
     
   const [episode,setEpisode]=useState([])
-  const [page,setPage]=useState(1)
   const [baseUrl,setbaseUrl]=useState('https://rickandmortyapi.com/api/episode/?page=1')
   const [next,setnext]=useState(null)
   const [prev,setprev]=useState(null)
