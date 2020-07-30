@@ -70,3 +70,65 @@ font-size:large;
 hr{
     background-color: white;
 }
+h4 {
+    color: white;
+    margin-top: 40px;
+  }
+
+  @media screen and (min-width:320px) and (max-width:768px){
+    #style-button {
+        display: flex;
+      }
+      form {
+        margin-top: 25px;
+        position: relative;
+        top: -5px;
+        left: 100px;
+      }
+      p {
+        position: absolute;
+        bottom: 30px;
+        color: blueviolet;
+      }
+      h1 {
+        text-align: center;
+      }
+    }
+    @media screen and (min-width:769px) and (max-width:990px){
+        #style-button {
+            display: flex;
+          }
+          form {
+            margin-top: 25px;
+            position: relative;
+            top: -5px;
+            left: 180px;
+          }
+          p {
+            position: absolute;
+            bottom: 30px;
+            color: blueviolet;
+          }
+          h1 {
+            text-align: center;
+          }
+        }
+    @media screen and (min-width:991px) and (max-width:1200px){
+        #style-button {
+            display: flex;
+          }
+          form {
+            margin-top: 25px;
+            position: relative;
+            top: -75px;
+            left: 570px;
+          }
+          h4{
+              margin-top: 10px;
+          }
+          p {
+            position: absolute;
+            bottom: 30px;
+            color: blueviolet;
+          }
+        }

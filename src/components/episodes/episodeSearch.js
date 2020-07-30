@@ -1,10 +1,13 @@
 import React,{useState} from 'react'
 import axios from 'axios';
+import EpisodeCard from './episodeCard'
+
 const EpisodeSearch=()=> {
    
    const [query,setQuery]=useState('')
    const [result,setResult]=useState([])
-  
+   const [loading,setLoading]=useState(false)
+    
    const handleChange=(e)=>{
      setQuery(e.target.value)
     //  console.log(query)
@@ -15,6 +18,7 @@ const EpisodeSearch=()=> {
      axios.get(`https://rickandmortyapi.com/api/episode/?name=${query}`)
       .then(res=>{
           setResult(res.data.results);
+          setLoading(true)
         //   console.log(result)
       })
       .catch(err=>{
@@ -29,23 +33,15 @@ const EpisodeSearch=()=> {
                 <input type="text" id="query" placeholder="Find your episodes.." onChange={handleChange} /> 
                 <button id="btn"><span>Search</span></button>
             </form>
+                {loading ? 
+                <div className="search">
+                <span>Search Results!</span>
+                <hr/> 
 
-            {result.map(epi=>{
-            return(
-                <div className="search" key={epi.id}>
-                    <span>Search Results!</span>
-                     <hr/> 
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title" ><strong>{epi.name}</strong></h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">{epi.episode}</h6>
-                                    <a href="#" className="card-link">{epi.air_date}</a>
-                            </div>
-                        </div>
-                     <hr/>
-                 </div>
-            )
-        })}
+                <EpisodeCard result={result}/>
+                <hr/> 
+                </div>
+                :''}
         </div>
     )
  }

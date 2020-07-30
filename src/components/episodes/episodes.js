@@ -7,10 +7,9 @@ export default function Episodes() {
     return (
         <div className="container">
                 
-            <h1 > <strong>Rick and Morty</strong></h1>
+            <h1><strong>Rick and Morty</strong></h1>
     
             <EpisodeSearch/>
-
             <EpisodeList/>
         </div>
     )
