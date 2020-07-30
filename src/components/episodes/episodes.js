@@ -8,9 +8,8 @@ export default function Episodes() {
         <div className="container">
                 
             <h1><strong>Rick and Morty</strong></h1>
-    
-            <EpisodeSearch/>
-            <EpisodeList/>
+             <EpisodeSearch/>
+             <EpisodeList/>
         </div>
     )
 }

@@ -1,36 +1,35 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import EpisodeCard from './episodeCard'
+import Button from './button'
 
 const EpisodeList=()=> {
     
   const [episode,setEpisode]=useState([])
   const [page,setPage]=useState(1)
+  const [baseUrl,setbaseUrl]=useState('https://rickandmortyapi.com/api/episode/?page=1')
+  const [next,setnext]=useState(null)
+  const [prev,setprev]=useState(null)
+
   
   useEffect(()=>{
       window.scrollTo(0,0);
-       axios.get(`https://rickandmortyapi.com/api/episode/?page=${page}`)
+       axios.get(baseUrl)
         .then((data) =>{
             // console.log(data.data.results)
-            setEpisode(data.data.results)
+            setEpisode(data.data.results);
+            setnext(data.data.info.next)
+            setprev(data.data.info.prev)
+
         })
         .catch((err)=>{
             console.log(err)
         })
-   },[page]);
+   },[baseUrl]);
    
-  const nextPage = (page) => {
-    setPage(page + 1);
-   };
-
-  const previousPage= (page) => {
-    if (page === 1) {
-      setPage(page);
-    } 
-    else {
-      setPage(page - 1);
-    }
-   };
+  const updateUrl =(url)=>{
+    setbaseUrl(url)
+  }
     
    return (
       <div className="container">
@@ -38,11 +37,7 @@ const EpisodeList=()=> {
            
             <EpisodeCard result={episode}/>
       
-            <div id="style-button">
-              <button id="button"onClick={()=>previousPage(page)}>Previous</button>
-
-              <button id="button"onClick={()=>nextPage(page)}>Next</button>
-            </div>
+            <Button prev={prev} next={next} updateUrl={updateUrl}/>
             
       </div>
     )
